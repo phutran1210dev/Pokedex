@@ -5,7 +5,7 @@ const BackPackScreen = () => {
   return (
     <View
       style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#FFF',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',

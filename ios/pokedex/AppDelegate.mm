@@ -57,6 +57,14 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  for (NSString *familyName in [UIFont familyNames]){
+      NSLog(@"Family name: %@", familyName);
+      for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+          NSLog(@"--Font name: %@", fontName);
+      }
+  }
+  
   return YES;
 }
 

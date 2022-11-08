@@ -2500,25 +2500,6 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
 
-curved-bottom-navigation-bar@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/curved-bottom-navigation-bar/-/curved-bottom-navigation-bar-2.0.5.tgz#c0ecc5183b15eb30766df7617d789b9db753e679"
-  integrity sha512-KfS/eAv0XkxnnljVrLNO2qGUvD5C4vxsrS/aPB8Rqm4n7qX4ewHFeipoXKrvdf8KowwjIbjN9JJfN+AWM0aHKg==
-  dependencies:
-    react-fast-compare "3.1.1"
-
-"d3-path@1 - 3":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-3.0.1.tgz#f09dec0aaffd770b7995f1a399152bf93052321e"
-  integrity sha512-gq6gZom9AFZby0YLduxT1qmrp4xpBA1YZr19OI717WIdKE2OM5ETq5qrHLb301IgxhLwcuxvGZVLeeWc/k1I6w==
-
-d3-shape@*:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-3.1.0.tgz#c8a495652d83ea6f524e482fca57aa3f8bc32556"
-  integrity sha512-tGDh1Muf8kWjEDT/LswZJ8WF85yDZLvVJpYU9Nq+8+yW1Z5enxrmXOhTArlkaElU+CTn0OTVNli+/i+HP45QEQ==
-  dependencies:
-    d3-path "1 - 3"
-
 data-urls@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/data-urls/-/data-urls-2.0.0.tgz#156485a72963a970f5d5821aaf642bef2bf2db9b"
@@ -2566,6 +2547,11 @@ dedent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.6.0.tgz#0e6da8f0ce52838ef5cec5c8f9396b0c1b64a3cb"
   integrity sha512-cSfRWjXJtZQeRuZGVvDrJroCR5V2UvBNUMHsPCdNYzuAG8b9V8aAy3KUcdQrGQPXs17Y+ojbPh1aOCplg9YR9g==
+
+deep-diff@^0.3.5:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
+  integrity sha512-yVn6RZmHiGnxRKR9sJb3iVV2XTF1Ghh2DiWRZ3dMnGc43yUdWWF/kX6lQyk3+P84iprfWKU/8zFTrlkvtFm1ug==
 
 deep-is@^0.1.3, deep-is@~0.1.3:
   version "0.1.4"
@@ -5778,11 +5764,6 @@ react-devtools-core@4.24.0:
     shell-quote "^1.6.1"
     ws "^7"
 
-react-fast-compare@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.1.1.tgz#0becf31e3812fa70dc231e259f40d892d4767900"
-  integrity sha512-SCsAORWK59BvauR2L1BTdjQbJcSGJJz03U0awektk2hshLKrITDDFTlgGCqIZpTDlPC/NFlZee6xTMzXPVLiHw==
-
 react-freeze@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-freeze/-/react-freeze-1.0.3.tgz#5e3ca90e682fed1d73a7cb50c2c7402b3e85618d"
@@ -5813,13 +5794,10 @@ react-native-codegen@^0.70.6:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
-react-native-curved-bottom-bar@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/react-native-curved-bottom-bar/-/react-native-curved-bottom-bar-2.1.4.tgz#9a8f5b6654a9776bcb2bb335bfad5c4cdfd60561"
-  integrity sha512-FtYf7+N2pKNNK+ePl4qquWmiLh4ofmBEEyrKsz7VxidRTa8EPqKnSVN73wdtL7rnPyyyWXIU7zNy7JHuAMYwRA==
-  dependencies:
-    d3-shape "*"
-    react-native-size-scaling "*"
+react-native-device-info@^10.3.0:
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-10.3.0.tgz#6bab64d84d3415dd00cc446c73ec5e2e61fddbe7"
+  integrity sha512-/ziZN1sA1REbJTv5mQZ4tXggcTvSbct+u5kCaze8BmN//lbxcTvWsU6NQd4IihLt89VkbX+14IGc9sVApSxd/w==
 
 react-native-gradle-plugin@^0.70.3:
   version "0.70.3"
@@ -5863,11 +5841,6 @@ react-native-screens@^3.18.2:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
-
-react-native-size-scaling@*:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/react-native-size-scaling/-/react-native-size-scaling-0.5.1.tgz#a1a7f91905e11fc6bba0a5178dc308aca7a76ec8"
-  integrity sha512-OVRox11fjpwUR7DQIPH/4RAhwkqm/r7lKYl5w0dEogFZ3Rz9CK7Bua7oaPLmVP2QnWP0rc0bpgkMc/Rl8ik1yw==
 
 react-native-svg@^13.4.0:
   version "13.4.0"
@@ -6019,6 +5992,13 @@ recast@^0.20.4:
     esprima "~4.0.0"
     source-map "~0.6.1"
     tslib "^2.0.1"
+
+redux-logger@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
+  integrity sha512-JoCIok7bg/XpqA1JqCqXFypuqBbQzGQySrhFzewB7ThcnysTO30l4VCst86AuB9T9tuT03MAA56Jw2PNhRSNCg==
+  dependencies:
+    deep-diff "^0.3.5"
 
 redux-thunk@^2.4.1:
   version "2.4.1"

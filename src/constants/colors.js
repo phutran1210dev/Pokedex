@@ -1,4 +1,4 @@
-const colors = {
+const colorsType = {
   bug: '#8CB330',
   dark: '#58575F',
   dragon: '#0F6AC0',
@@ -44,11 +44,16 @@ const textColor = {
   white: '#FFF',
   black: '#17171B',
   grey: '#747476',
-  number: 'rgba(23, 23, 27, 0.6)',
+  number: '#17171B .6',
+};
+
+const colorCommon = {
+  white: '#FFFF',
+  black: '#000',
 };
 
 const customColor = {
   input: '#F2F2F2',
 };
 
-export {colors, backgroundColors, textColor, customColor};
+export {colorsType, backgroundColors, textColor, customColor, colorCommon};

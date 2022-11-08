@@ -22,7 +22,7 @@ import BackPackScreen from '../screens/BackPackScreen';
 import RegionsScreen from '../screens/RegionsScreen';
 
 // Icons
-import {icons} from '../constants';
+import {colorCommon, icons, responsive} from '../constants';
 
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
@@ -37,13 +37,13 @@ const Tabs = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          elevation: 0,
-          backgroundColor: '#E2E2E2',
+          bottom: responsive.width(0),
+          left: responsive.width(0),
+          right: responsive.width(0),
+          top: responsive.width(0),
+          elevation: responsive.width(0),
           borderTopColor: 'transparent',
-          height: 50,
+          height: responsive.width(50),
         },
       }}
       tabBar={props => <AnimatedTabBar {...props} />}>
@@ -62,14 +62,14 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="Regions"
-        component={RegionsScreen}
+        name="BackPack"
+        component={BackPackScreen}
         options={{
           tabBarIcon: ({ref}) => (
             <Image
               resizeMode="cover"
               ref={ref}
-              source={icons.map}
+              source={icons.backPack}
               style={styles.icon}
             />
           ),
@@ -90,14 +90,14 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="BackPack"
-        component={BackPackScreen}
+        name="Regions"
+        component={RegionsScreen}
         options={{
           tabBarIcon: ({ref}) => (
             <Image
               resizeMode="cover"
               ref={ref}
-              source={icons.backPack}
+              source={icons.map}
               style={styles.icon}
             />
           ),
@@ -113,33 +113,34 @@ const styles = StyleSheet.create({
   },
   activeBackground: {
     position: 'absolute',
+    left: -2.75,
   },
   tabBarContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
   component: {
-    height: 60,
-    width: 60,
-    marginTop: 0,
+    height: responsive.width(60),
+    width: responsive.width(60),
+    marginTop: responsive.width(0),
   },
   componentCircle: {
     flex: 1,
-    borderRadius: 30,
-    backgroundColor: 'white',
+    borderRadius: responsive.width(30),
+    backgroundColor: colorCommon.white,
   },
   iconContainer: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    top: responsive.width(0),
+    left: responsive.width(0),
+    right: responsive.width(0),
+    bottom: responsive.width(0),
     justifyContent: 'center',
     alignItems: 'center',
   },
   icon: {
-    height: 35,
-    width: 35,
+    height: responsive.width(35),
+    width: responsive.width(35),
   },
 });
 
@@ -184,19 +185,19 @@ const AnimatedTabBar = ({
   const animatedStyles = useAnimatedStyle(() => {
     return {
       // translateX to the calculated offset with a smooth transition
-      transform: [{translateX: withTiming(xOffset.value, {duration: 250})}],
+      transform: [{translateX: withTiming(xOffset.value, {duration: 500})}],
     };
   });
 
   return (
     <View style={[styles.tabBar, {paddingBottom: bottom}]}>
       <AnimatedSvg
-        width={110}
-        height={60}
+        width={responsive.width(110)}
+        height={responsive.width(60)}
         viewBox="0 0 110 60"
         style={[styles.activeBackground, animatedStyles]}>
         <Path
-          fill="#FFFFFF"
+          fill={colorCommon.white}
           d="M20 0H0c11.046 0 20 8.953 20 20v5c0 19.33 15.67 35 35 35s35-15.67 35-35v-5c0-11.045 8.954-20 20-20H20z"
         />
       </AnimatedSvg>
@@ -237,7 +238,7 @@ const TabBarComponent = ({active, options, onLayout, onPress}) => {
     return {
       transform: [
         {
-          scale: withTiming(active ? 1 : 0, {duration: 250}),
+          scale: withTiming(active ? 1 : 0, {duration: 500}),
         },
       ],
     };
@@ -245,7 +246,7 @@ const TabBarComponent = ({active, options, onLayout, onPress}) => {
 
   const animatedIconContainerStyles = useAnimatedStyle(() => {
     return {
-      opacity: withTiming(active ? 1 : 0.5, {duration: 250}),
+      opacity: withTiming(active ? 1 : 0.5, {duration: 500}),
     };
   });
 
