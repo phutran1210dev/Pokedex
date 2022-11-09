@@ -8,13 +8,7 @@ import {
   Image,
 } from 'react-native';
 import React from 'react';
-import {
-  backgroundImg,
-  icons,
-  responsive,
-  SIZES,
-  textColor,
-} from 'src/constants';
+import {backgroundImg, colorCommon, responsive} from '../../constants';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export const RegionPlace = ({navigation}) => {
@@ -24,7 +18,7 @@ export const RegionPlace = ({navigation}) => {
       style={{
         flex: 1,
         position: 'relative',
-        backgroundColor: '#F5F5F5',
+        backgroundColor: colorCommon.white,
         paddingTop: top,
       }}>
       <ImageBackground

@@ -1,11 +1,12 @@
 import {Text, View} from 'react-native';
 import React from 'react';
+import {colorCommon} from '../constants';
 
 const BackPackScreen = () => {
   return (
     <View
       style={{
-        backgroundColor: '#FFF',
+        backgroundColor: colorCommon.white,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',

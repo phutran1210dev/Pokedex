@@ -1,4 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
+import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import pokemonReducer from './reducers/PokemonReducer';
 
@@ -6,7 +7,8 @@ import pokemonReducer from './reducers/PokemonReducer';
 
 const store = configureStore({
   reducer: {pokemon: pokemonReducer},
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk),
+  // middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunk),
+  middleware: [thunk, logger],
 });
 
 export default store;

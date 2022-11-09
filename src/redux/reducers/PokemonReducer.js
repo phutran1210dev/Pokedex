@@ -1,22 +1,35 @@
-import {createSlice} from '@reduxjs/toolkit';
-// createAsyncThunk
-// import {fetchPokemon} from 'api/pokemonList';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import axios from 'axios';
+import {fetchPokemon} from '../../api/pokemonList';
 
-// export const getPokemonList = createAsyncThunk(
-//   'pokemons/list',
-//   async (payload, {fulfillWithValue, dispatch}) => {
-//     return fetchPokemon(payload)
-//       .then(data => {
-//         return data.json().then(res =>
-//           res.results.forEach(item => {
-//             console.log('item');
-//             // dispatch(getEachItemCategoryList(item));
-//           }),
-//         );
-//       })
-//       .catch(error => error);
-//   },
-// );
+export const getPokemonList = createAsyncThunk(
+  'pokemons/list',
+  async (payload, {fulfillWithValue, dispatch}) => {
+    try {
+      const formatData = [];
+      const {data} = await fetchPokemon();
+      const {results} = data;
+      const _results = results;
+
+      const promisses = results.map(item => axios.get(item.url));
+      let dataDetail = await Promise.all(promisses).then(list => {
+        return list;
+      });
+      _results.forEach((item, index) => {
+        let pokeDetail = {
+          ..._results[index],
+          detail: dataDetail[index].pokeDetail,
+        };
+        delete pokeDetail.url;
+        formatData[index] = pokeDetail;
+      });
+      return dataDetail;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  },
+);
 
 export const pokemonSlice = createSlice({
   name: 'pokemons',
@@ -42,23 +55,19 @@ export const pokemonSlice = createSlice({
       state.offset += 20;
     },
   },
-  // extraReducers: builder => {
-  //   builder
-  //     .addCase(getPokemonList.pending, (state, payload) => {
-  //       state.loading = true;
-  //       console.log(payload);
-  //     })
-  //     .addCase(getPokemonList.fulfilled, (state, payload) => {
-  //       state.loading = false;
-  //       state.data.push(state);
-  //       console.log('state', state);
-  //       console.log('payload', payload);
-  //     })
-  //     .addCase(getPokemonList.rejected, (state, payload) => {
-  //       state.loading = false;
-  //       console.log('payload', payload);
-  //     });
-  // },
+  extraReducers: builder => {
+    builder
+      .addCase(getPokemonList.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getPokemonList.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(getPokemonList.rejected, (state, action) => {
+        state.loading = false;
+      });
+  },
 });
 export const {resetData, setLimit, setOffset} = pokemonSlice.actions;
 export default pokemonSlice.reducer;

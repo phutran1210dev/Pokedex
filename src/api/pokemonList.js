@@ -1,5 +1,11 @@
-import ApiRequest from './index';
+import axios from 'axios';
+import {baseUrl} from '../configs';
 
-export function fetchPokemon(payload) {
-  return ApiRequest.get(`/${payload.type}`, payload);
+export function fetchPokemon(params) {
+  return axios({
+    method: 'GET',
+    params,
+    url: '/pokemon',
+    baseURL: baseUrl,
+  });
 }
