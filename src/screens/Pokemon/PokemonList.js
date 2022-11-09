@@ -36,7 +36,6 @@ export const PokemonList = ({navigation}) => {
   }, [dispatch]);
 
   const renderPokemonCard = ({item, index}) => {
-    console.log(item.data.types[0].type.name);
     return (
       <View
         key={index}
