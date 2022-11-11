@@ -27,15 +27,15 @@ Pokemon API : [Pokedex](https://pokeapi.co/)
 In process
 
 ### Preview Screen
-- ![Preview Screen](https://github.com/phutran1210dev/porfolio-v1/blob/master/src/assets/Screens/Pokemon_sceen#11:11.gif)
 
-- ![Home Screen](https://github.com/phutran1210dev/porfolio-v1/blob/master/src/assets/Screens/home_screen.png)
-
-- ![PokemonList Screen](https://github.com/phutran1210dev/porfolio-v1/blob/master/src/assets/Screens/PokemonList_screen.png)
-
-- ![Pokemon Detail Screen #InProcess](https://github.com/phutran1210dev/porfolio-v1/blob/master/src/assets/Screens/PokemonDetail_screen#11_11.png)
-
-
+- Preview Screen
+  - <img src="https://github.com/phutran1210dev/Pokedex/blob/master/src/assets/Screens/Pokemon_sceen%2311:11.gif" width="376" height="100%">
+- PokemonList Screen
+  - <img src="https://github.com/phutran1210dev/Pokedex/blob/master/src/assets/Screens/home_screen.png" width="376" height="100%">
+- PokemonList Screen
+  - <img src="https://github.com/phutran1210dev/Pokedex/blob/master/src/assets/Screens/PokemonList_screen.png" width="376" height="100%">
+- Pokemon Detail Screen #InProcess
+  - <img src="https://github.com/phutran1210dev/Pokedex/blob/master/src/assets/Screens/PokemonDetail_screen%2311_11.png" width="376" height="100%">
 
 ## Structure Folder
 
