@@ -26,6 +26,17 @@ Pokemon API : [Pokedex](https://pokeapi.co/)
 
 In process
 
+### Preview Screen
+- ![Preview Screen](https://github.com/phutran1210dev/porfolio-v1/blob/master/src/assets/Screens/Pokemon_sceen#11:11.gif)
+
+- ![Home Screen](https://github.com/phutran1210dev/porfolio-v1/blob/master/src/assets/Screens/home_screen.png)
+
+- ![PokemonList Screen](https://github.com/phutran1210dev/porfolio-v1/blob/master/src/assets/Screens/PokemonList_screen.png)
+
+- ![Pokemon Detail Screen #InProcess](https://github.com/phutran1210dev/porfolio-v1/blob/master/src/assets/Screens/PokemonDetail_screen#11_11.png)
+
+
+
 ## Structure Folder
 
 ```javascript
@@ -41,7 +52,7 @@ In process
       Slices     /* Slice Redux <=> reducer && action */
     './index.js' /* Store */
     screens      /* Define screen <=> page */
-    utils
+    utils        /* Define utils functions*/
 ```
 
 ### Dependencies:
