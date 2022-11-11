@@ -8,6 +8,7 @@ const icons = {
   map: require('../assets/tabicons/map.png'),
 
   // Icon tab
+  nextIcon: require('../assets/icons/nextIcon.png'),
   backICon: require('../assets/icons/backICon.png'),
   generationIcon: require('../assets/icons/generationIcon.png'),
   sortIcon: require('../assets/icons/sortIcon.png'),
@@ -25,6 +26,7 @@ const backgroundImg = {
   pokeball_card: require('../assets/Pokeball_card.png'),
   map_card: require('../assets/location_map.png'),
   dot_card: require('../assets/icons/dot_card.png'),
+  pokemon_circle: require('../assets/icons/circle.png'),
 };
 
 export {icons, backgroundImg};

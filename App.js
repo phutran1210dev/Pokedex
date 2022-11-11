@@ -10,8 +10,9 @@ import {Provider} from 'react-redux';
 // Components
 import {Tabs} from './src/navigations/Tabs';
 import store from './src/redux';
-import {RegionPlace} from 'src/screens/Regions';
-import {PokemonList} from 'src/screens/Pokemon/PokemonList';
+import RegionPlace from './src/screens/RegionsScreen';
+import PokemonList from './src/screens/Pokemon/PokemonList';
+import PokemonDetail from './src/screens/Pokemon/PokemonDetail';
 
 // Navigate
 const Stack = createNativeStackNavigator();
@@ -27,6 +28,7 @@ const App = () => {
             }}>
             <Stack.Screen name="Tabs" component={Tabs} />
             <Stack.Screen name="PokemonList" component={PokemonList} />
+            <Stack.Screen name="PokemonDetail" component={PokemonDetail} />
             <Stack.Screen name="Region" component={RegionPlace} />
           </Stack.Navigator>
         </NavigationContainer>

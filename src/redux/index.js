@@ -1,7 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import pokemonReducer from './reducers/PokemonReducer';
+import pokemonReducer from './Slices/PokemonReducer';
 
 // Reducer
 

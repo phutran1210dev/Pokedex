@@ -8,6 +8,7 @@ import {
 } from './colors';
 import {responsive} from './responsive';
 import {SIZES, FONTS} from './fonts';
+import {TYPEICON} from './type';
 
 export {
   icons,
@@ -20,4 +21,5 @@ export {
   responsive,
   SIZES,
   FONTS,
+  TYPEICON,
 };

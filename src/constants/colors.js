@@ -44,7 +44,7 @@ const textColor = {
   white: '#FFF',
   black: '#17171B',
   grey: '#747476',
-  number: '#17171B .6',
+  number: '#17171b99',
 };
 
 const colorCommon = {

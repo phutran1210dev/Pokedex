@@ -1,15 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect, useMemo} from 'react';
 import {
   FlatList,
   Image,
   ImageBackground,
+  StyleSheet,
   Text,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
-import {getPokemonList} from '../../redux/reducers/PokemonReducer';
+import {getPokemonList} from '../../redux/Slices/PokemonReducer';
 import {
   backgroundColors,
   backgroundImg,
@@ -20,13 +21,14 @@ import {
   responsive,
   SIZES,
   textColor,
+  TYPEICON,
 } from '../../constants';
-import {TYPEICON} from '../../constants/type';
 
 // components
 import Input from '../../components/InputField';
+import BadgeType from '../../components/BadgeType/BadgeType';
 
-export const PokemonList = ({navigation}) => {
+const PokemonList = ({navigation}) => {
   const {top, bottom} = useSafeAreaInsets();
   const dispatch = useDispatch();
   const {data} = useSelector(state => state.pokemon);
@@ -35,199 +37,150 @@ export const PokemonList = ({navigation}) => {
     dispatch(getPokemonList());
   }, [dispatch]);
 
-  const renderPokemonCard = ({item, index}) => {
-    return (
-      <View
-        key={index}
-        style={{
-          position: 'relative',
-          height: responsive.width(140),
-          paddingTop: responsive.width(20),
-          backgroundColor: 'transparent',
-        }}>
-        <Image
-          resizeMode="cover"
-          source={{
-            uri: item.data.sprites.other['official-artwork'].front_default,
-          }}
-          style={[
-            {
-              width: responsive.width(130),
-              height: responsive.width(130),
-              position: 'absolute',
-              top: responsive.width(0),
-              right: responsive.width(15),
-              zIndex: 100,
-            },
-          ]}
-        />
-        {/* Card Item */}
-        <TouchableWithoutFeedback
-          onPress={() => {
-            console.log('Go to detail');
+  const renderPokemonCard = useCallback(
+    ({item, index}) => {
+      return (
+        <View
+          key={index}
+          style={{
+            position: 'relative',
+            height: responsive.width(140),
+            paddingTop: responsive.width(20),
+            backgroundColor: 'transparent',
           }}>
-          <View
-            style={{
-              position: 'relative',
-              height: responsive.width(115),
-              justifyContent: 'center',
-              borderRadius: SIZES.padding,
-              paddingHorizontal: responsive.width(20),
-              backgroundColor:
-                backgroundColors?.[`${item.data.types[0].type.name}`],
-              marginBottom: responsive.width(30),
-              overflow: 'hidden',
+          <Image
+            resizeMode="cover"
+            source={{
+              uri: item.data.sprites.other['official-artwork'].front_default,
+            }}
+            style={[
+              {
+                width: responsive.width(130),
+                height: responsive.width(130),
+                position: 'absolute',
+                top: responsive.width(0),
+                right: responsive.width(15),
+                zIndex: 100,
+              },
+            ]}
+          />
+          {/* Card Item */}
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate('PokemonDetail', {selectedPokemon: item});
             }}>
-            <Image
-              resizeMode="cover"
-              source={backgroundImg.pokeball_card}
-              style={[
-                {
-                  width: responsive.width(150),
-                  height: responsive.width(150),
-                  position: 'absolute',
-                  top: responsive.width(-15),
-                  right: responsive.width(-15),
-                },
-              ]}
-            />
-            <Image
-              resizeMode="cover"
-              source={backgroundImg.dot_card}
-              style={[
-                {
-                  width: responsive.width(70),
-                  height: responsive.width(35),
-                  position: 'absolute',
-                  top: responsive.width(-10),
-                  left: responsive.width(85),
-                  tintColor: textColor.white,
-                  opacity: 0.3,
-                },
-              ]}
-            />
-            {/* Card_id Info */}
-            <View>
-              <Text
-                style={{
-                  color: textColor.number,
-                  marginBottom: responsive.width(3),
-                  ...FONTS.PokemonNumber,
-                }}>
-                #
-                {item.data.id < 10
-                  ? `00${item.data.id}`
-                  : item.data.id < 100
-                  ? `0${item.data.id}`
-                  : item.data.id}
-              </Text>
-              <Text
-                style={{
-                  color: textColor.white,
-                  marginBottom: responsive.width(5),
-                  ...FONTS.PokemonName,
-                }}>
-                {item.data.name}
-              </Text>
-              <View style={{flexDirection: 'row'}}>
-                {/* badge type */}
-                {item.data.types?.map((pokemonType, indexType) => {
-                  return (
-                    <View
-                      key={indexType}
-                      style={{
-                        flexDirection: 'row',
-                        minWidth: responsive.width(60),
-                        backgroundColor:
-                          colorsType?.[`${pokemonType.type?.name}`],
-                        padding: responsive.width(5),
-                        borderRadius: responsive.width(3),
-                        marginRight: responsive.width(5),
-                      }}>
-                      {}
-                      <Image
-                        resizeMode="cover"
-                        source={TYPEICON.fire}
-                        style={{
-                          width: responsive.width(15),
-                          height: responsive.width(15),
-                          tintColor: colorCommon.white,
-                        }}
-                      />
-                      <Text
-                        style={{
-                          marginLeft: responsive.width(5),
-                          color: textColor.white,
-                          ...FONTS.PokemonType,
-                        }}>
-                        {pokemonType.type?.name}
-                      </Text>
-                    </View>
-                  );
-                })}
+            <View
+              style={{
+                position: 'relative',
+                height: responsive.width(115),
+                justifyContent: 'center',
+                borderRadius: SIZES.padding,
+                paddingHorizontal: responsive.width(20),
+                marginBottom: responsive.width(30),
+                overflow: 'hidden',
+                backgroundColor:
+                  backgroundColors?.[`${item.data.types[0].type.name}`],
+              }}>
+              <Image
+                resizeMode="cover"
+                source={backgroundImg.pokeball_card}
+                style={[
+                  {
+                    width: responsive.width(150),
+                    height: responsive.width(150),
+                    position: 'absolute',
+                    top: responsive.width(-15),
+                    right: responsive.width(-15),
+                  },
+                ]}
+              />
+              <Image
+                resizeMode="cover"
+                source={backgroundImg.dot_card}
+                style={[
+                  {
+                    width: responsive.width(70),
+                    height: responsive.width(35),
+                    position: 'absolute',
+                    top: responsive.width(-10),
+                    left: responsive.width(85),
+                    tintColor: textColor.white,
+                    opacity: 0.3,
+                  },
+                ]}
+              />
+              {/* Card_id Info */}
+              <View>
+                <Text
+                  style={{
+                    color: textColor.number,
+                    marginBottom: responsive.width(3),
+                    ...FONTS.PokemonNumber,
+                  }}>
+                  #
+                  {item.data.id < 10
+                    ? `00${item.data.id}`
+                    : item.data.id < 100
+                    ? `0${item.data.id}`
+                    : item.data.id}
+                </Text>
+                <Text
+                  style={{
+                    color: textColor.white,
+                    marginBottom: responsive.width(5),
+                    ...FONTS.PokemonName,
+                  }}>
+                  {item.data.name}
+                </Text>
+                <View style={{flexDirection: 'row'}}>
+                  {/* badge type */}
+                  {item.data.types?.map((pokemonType, indexType) => {
+                    return <BadgeType index={indexType} type={pokemonType} />;
+                  })}
+                </View>
               </View>
             </View>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
-    );
-  };
+          </TouchableWithoutFeedback>
+        </View>
+      );
+    },
+    [navigation],
+  );
+
+  const memoizedPokemonCard = useMemo(
+    () => renderPokemonCard,
+    [renderPokemonCard],
+  );
 
   return (
-    <View
-      style={{
-        flex: 1,
-        position: 'relative',
-        backgroundColor: colorCommon.white,
-      }}>
+    <View style={PokemonListStyle.container}>
       <ImageBackground
         resizeMode="cover"
         source={backgroundImg.pokeballHeader}
-        style={{
-          width: responsive.width(375),
-          height: responsive.width(375),
-          position: 'absolute',
-          top: responsive.width(-375 / 2),
-        }}
+        style={PokemonListStyle.pokeballHeader}
       />
       <View
-        style={{
-          flex: 1,
-          paddingTop: top,
-          paddingHorizontal: SIZES.padding,
-        }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
+        style={[
+          PokemonListStyle.containerPokemonList,
+          {
+            paddingTop: top,
+          },
+        ]}>
+        <View style={PokemonListStyle.containerButton}>
           <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
             <Image
               resizeMode="cover"
               source={icons.backICon}
-              style={{
-                width: responsive.width(25),
-                height: responsive.width(25),
-                tintColor: textColor.black,
-              }}
+              style={PokemonListStyle.backIcon}
             />
           </TouchableWithoutFeedback>
 
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: responsive.width(115),
-            }}>
+          <View style={PokemonListStyle.wrapperButtonRight}>
             <TouchableWithoutFeedback>
               <Image
                 resizeMode="cover"
                 source={icons.generationIcon}
-                style={{
-                  width: responsive.width(25),
-                  height: responsive.width(25),
-                  tintColor: textColor.black,
-                }}
+                style={PokemonListStyle.generationIcon}
               />
             </TouchableWithoutFeedback>
 
@@ -235,11 +188,7 @@ export const PokemonList = ({navigation}) => {
               <Image
                 resizeMode="cover"
                 source={icons.sortIcon}
-                style={{
-                  width: responsive.width(25),
-                  height: responsive.width(25),
-                  tintColor: textColor.black,
-                }}
+                style={PokemonListStyle.sortIcon}
               />
             </TouchableWithoutFeedback>
 
@@ -247,49 +196,32 @@ export const PokemonList = ({navigation}) => {
               <Image
                 resizeMode="cover"
                 source={icons.filterIcon}
-                style={{
-                  width: responsive.width(25),
-                  height: responsive.width(25),
-                  tintColor: textColor.black,
-                }}
+                style={PokemonListStyle.filterIcon}
               />
             </TouchableWithoutFeedback>
           </View>
         </View>
 
-        <View
-          style={{
-            marginTop: responsive.width(35),
-            marginBottom: responsive.width(20),
-          }}>
-          <Text
-            style={{
-              marginBottom: responsive.width(10),
-              color: textColor.black,
-              ...FONTS.ApplicationTitle,
-            }}>
-            Pokemon
+        <View style={PokemonListStyle.containerInput}>
+          <Text style={PokemonListStyle.searchTitle}>Pokemon</Text>
+          <Text style={PokemonListStyle.placeHolderSearch}>
+            Search for Pokemon by name or using the National Pokédex number.
           </Text>
-
-          <Text
-            style={{
-              marginBottom: responsive.width(25),
-              color: textColor.grey,
-              ...FONTS.Description,
-            }}>
-            Search for Pokémon by name or using the National Pokédex number.
-          </Text>
-
-          <Input placeHolder={'What Pokémon are you looking for?'} />
+          <Input placeHolder={'What Pokemon are you looking for?'} />
         </View>
 
-        <View style={{flex: 1, paddingBottom: bottom}}>
+        <View
+          style={[
+            PokemonListStyle.wrapperPokemonList,
+            {paddingBottom: bottom},
+          ]}>
           <FlatList
+            keyExtractor={(item, index) => `pokemon-${index}`}
             showsVerticalScrollIndicator={false}
             scrollEventThrottle={0.5}
-            decelerationRate={0}
+            decelerationRate={'normal'}
             data={data}
-            renderItem={renderPokemonCard}
+            renderItem={memoizedPokemonCard}
             // onEndReached
           />
         </View>
@@ -297,3 +229,69 @@ export const PokemonList = ({navigation}) => {
     </View>
   );
 };
+
+const PokemonListStyle = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: 'relative',
+    backgroundColor: colorCommon.white,
+  },
+  pokeballHeader: {
+    width: responsive.width(375),
+    height: responsive.width(375),
+    position: 'absolute',
+    top: responsive.width(-375 / 2),
+  },
+  containerButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  backIcon: {
+    width: responsive.width(25),
+    height: responsive.width(25),
+    tintColor: textColor.black,
+  },
+  wrapperButtonRight: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: responsive.width(115),
+  },
+  generationIcon: {
+    width: responsive.width(25),
+    height: responsive.width(25),
+    tintColor: textColor.black,
+  },
+  sortIcon: {
+    width: responsive.width(25),
+    height: responsive.width(25),
+    tintColor: textColor.black,
+  },
+  filterIcon: {
+    width: responsive.width(25),
+    height: responsive.width(25),
+    tintColor: textColor.black,
+  },
+  containerPokemonList: {
+    flex: 1,
+    paddingHorizontal: SIZES.padding,
+  },
+  wrapperPokemonList: {
+    flex: 1,
+  },
+  containerInput: {
+    marginTop: responsive.width(35),
+    marginBottom: responsive.width(20),
+  },
+  searchTitle: {
+    marginBottom: responsive.width(10),
+    color: textColor.black,
+    ...FONTS.ApplicationTitle,
+  },
+  placeHolderSearch: {
+    marginBottom: responsive.width(25),
+    color: textColor.grey,
+    ...FONTS.Description,
+  },
+});
+
+export default PokemonList;
