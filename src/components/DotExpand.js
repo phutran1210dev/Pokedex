@@ -5,7 +5,7 @@ import Animated, {
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import {colorsType, responsive, SIZES} from 'src/constants';
+import {colorsType, responsive, SIZES} from '../constants';
 
 const cardWidth = responsive.WIDTH - responsive.width(40);
 const DotExpand = ({index, dotPosition}) => {

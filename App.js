@@ -13,6 +13,7 @@ import store from './src/redux';
 import RegionPlace from './src/screens/RegionsScreen';
 import PokemonList from './src/screens/Pokemon/PokemonList';
 import PokemonDetail from './src/screens/Pokemon/PokemonDetail';
+import SplashScreen from './src/screens/splash/SplashScreen';
 
 // Navigate
 const Stack = createNativeStackNavigator();
@@ -27,6 +28,7 @@ const App = () => {
               headerShown: false,
             }}>
             <Stack.Screen name="Tabs" component={Tabs} />
+            <Stack.Screen name="Splash" component={SplashScreen} />
             <Stack.Screen name="PokemonList" component={PokemonList} />
             <Stack.Screen name="PokemonDetail" component={PokemonDetail} />
             <Stack.Screen name="Region" component={RegionPlace} />

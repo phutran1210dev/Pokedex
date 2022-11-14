@@ -12,7 +12,7 @@ import {
 const BadgeType = ({index, type}) => {
   return (
     <View
-      key={index}
+      key={`badge-${index}`}
       style={[
         BadgeStype.containerBadge,
         {backgroundColor: colorsType?.[`${type?.type.name}`]},
@@ -32,16 +32,18 @@ export default memo(BadgeType);
 const BadgeStype = StyleSheet.create({
   containerBadge: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     minWidth: responsive.width(60),
     padding: responsive.width(5),
     borderRadius: responsive.width(5),
     marginRight: responsive.width(5),
   },
   pokemonName: {
+    ...FONTS.PokemonType,
     marginLeft: responsive.width(5),
     color: textColor.white,
     textTransform: 'capitalize',
-    ...FONTS.PokemonType,
   },
   iconType: {
     width: responsive.width(15),

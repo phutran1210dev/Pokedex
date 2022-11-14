@@ -46,7 +46,7 @@ const FONTS = {
     lineHeight: 14,
   },
   PokemonType: {
-    fontFamily: isIos ? 'SFProDisplay-Regular' : 'SF-Pro-Display-Regular',
+    fontFamily: isIos ? 'SFProDisplay-Bold' : 'SF-Pro-Display-Bold',
     fontSize: SIZES.PokemonType,
     lineHeight: 14,
   },

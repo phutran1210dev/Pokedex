@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import DotExpand from 'components/DotExpand';
+import DotExpand from '../components/DotExpand';
 import React from 'react';
 import {
   Image,
@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import Animated, {
   useAnimatedScrollHandler,
-  useDerivedValue,
+  // useDerivedValue,
   useSharedValue,
 } from 'react-native-reanimated';
 import {

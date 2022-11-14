@@ -1,4 +1,4 @@
-import {icons, backgroundImg} from './icons';
+import {icons, backgroundImg, splashIcon} from './icons';
 import {
   colorsType,
   backgroundColors,
@@ -22,4 +22,5 @@ export {
   SIZES,
   FONTS,
   TYPEICON,
+  splashIcon,
 };

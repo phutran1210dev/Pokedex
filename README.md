@@ -48,8 +48,8 @@ In process
     constants    /*Define color, fonts, icon, responsive device*/
     data         /* Dummy Data*/
     navigations  /* Settup navigate Tab-bottom react native*/
-    redux
-      Slices     /* Slice Redux <=> reducer && action */
+    redux        /* Redux*/
+      Slices        /* Slice Redux <=> reducer && action */
     './index.js' /* Store */
     screens      /* Define screen <=> page */
     utils        /* Define utils functions*/

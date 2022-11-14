@@ -6,7 +6,6 @@ import {
   View,
 } from 'react-native';
 import React, {memo, useEffect, useState} from 'react';
-import {TabView, SceneMap} from 'react-native-tab-view';
 import {
   backgroundColors,
   backgroundImg,
@@ -19,13 +18,14 @@ import {
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import BadgeType from '../../components/BadgeType/BadgeType';
 
+import {InforTab} from '../../navigations/InforTab';
+
 const PokemonDetail = ({navigation, route}) => {
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const {top} = useSafeAreaInsets();
   useEffect(() => {
     setSelectedPokemon(route.params.selectedPokemon);
   }, [route.params.selectedPokemon]);
-  console.log('selectedPokemon', selectedPokemon?.data);
   return (
     <View
       style={[
@@ -58,6 +58,17 @@ const PokemonDetail = ({navigation, route}) => {
           source={backgroundImg.pokemon_circle}
           style={PokemonDetailStyle.pokemonCircle}
         />
+        <Image
+          resizeMode="cover"
+          source={icons.patternDetailCard}
+          style={{
+            position: 'absolute',
+            right: responsive.width(-100),
+            top: responsive.width(85),
+            width: responsive.width(140),
+            height: responsive.width(65),
+          }}
+        />
         <View style={PokemonDetailStyle.pokemonInfoContainer}>
           <Text style={PokemonDetailStyle.pokemonNumber}>
             #
@@ -72,7 +83,13 @@ const PokemonDetail = ({navigation, route}) => {
           </Text>
           <View style={PokemonDetailStyle.containerBadge}>
             {selectedPokemon?.data.types?.map((pokemonType, indexType) => {
-              return <BadgeType index={indexType} type={pokemonType} />;
+              return (
+                <BadgeType
+                  key={indexType}
+                  index={indexType}
+                  type={pokemonType}
+                />
+              );
             })}
           </View>
         </View>
@@ -82,6 +99,7 @@ const PokemonDetail = ({navigation, route}) => {
           style={PokemonDetailStyle.nextIcon}
         />
       </View>
+      <InforTab backgroundColor={selectedPokemon?.data.types[0].type.name} />
     </View>
   );
 };
@@ -110,6 +128,7 @@ const PokemonDetailStyle = StyleSheet.create({
     alignItems: 'center',
     marginTop: responsive.width(15),
     marginLeft: responsive.width(40),
+    marginBottom: responsive.width(50),
   },
   pokemonCircle: {
     position: 'absolute',

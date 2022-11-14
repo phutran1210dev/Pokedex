@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Image, TextInput, View} from 'react-native';
-import {icons, responsive, textColor} from 'src/constants';
+import {icons, responsive, textColor} from '../constants';
 
 const Input = ({placeHolder, handleInputText, icon, ...props}) => {
   return (

@@ -13,6 +13,8 @@ const icons = {
   generationIcon: require('../assets/icons/generationIcon.png'),
   sortIcon: require('../assets/icons/sortIcon.png'),
   filterIcon: require('../assets/icons/filterIcon.png'),
+  patternDetailCard: require('../assets/patternDetailCard.png'),
+  pokeballTopTab: require('../assets/pokeballTopTab.png'),
 
   // Common Icon
   searchIcon: require('../assets/icons/searchIcon.png'),
@@ -29,4 +31,12 @@ const backgroundImg = {
   pokemon_circle: require('../assets/icons/circle.png'),
 };
 
-export {icons, backgroundImg};
+const splashIcon = {
+  splash_pokeball: require('../assets/splash/PokeBall.png'),
+  vector_1: require('../assets/splash/vector_1.png'),
+  vector_2: require('../assets/splash/vector_2.png'),
+  vector_3: require('../assets/splash/vector_3.png'),
+  vector_4: require('../assets/splash/vector_4.png'),
+};
+
+export {icons, backgroundImg, splashIcon};

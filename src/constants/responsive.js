@@ -1,5 +1,5 @@
 import {Dimensions, PixelRatio} from 'react-native';
-import {iPad, isTabletAndroid} from 'src/utils/checkDevice';
+import {iPad, isTabletAndroid} from '../utils/checkDevice';
 
 const {width: DEVICE_SCREEN_WIDTH, height: DEVICE_SCREEN_HEIGHT} =
   Dimensions.get('screen');
